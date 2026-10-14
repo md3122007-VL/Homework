@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border: 2px solid #ccc;
+            width: 850px;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        .a{
+            background-color: #add8e6;
+            text-align: center;
+            font-weight: bold;
+            height: 45px;
+            font-size: 30px;
+        }
+        .b {
+            width: 220px;
+            padding: 5px;
+            vertical-align: top;
+            border-right: 2px solid #ccc;
+            font-size: 18px;
+        }
+        .nd{
+            background-color:darkseagreen;
+            text-align: center;
+            vertical-align: top;
+            padding-bottom: 60px;
+            color:blue;
+            height: 500px;
+            padding: 0;
+        }
+        .nd h1{
+            font-size: 50px;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        .cap{
+            font-size: 20px; color: orange;
+        }
+
+    </style>
+</head>
+<body>
+     <table class="main-table">
+        <tr>
+            <td colspan="2" class="a">
+                BÀI THỰC HÀNH NHÓM ...
+            </td>
+        </tr>
+        <tr>
+            <td class="b">
+                <h4>Thông tin các mùa trong năm</h4>
+                <ul>
+                    <li><a href="muaxuan.html" target="main">Mùa xuân</a></li>
+                    <li><a href="muahe.html" target="main">Mùa hạ</a></li>
+                    <li><a href="muathu.html" target="main">Mùa thu</a></li>
+                    <li><a href="muadong.html" target="main">Mùa đông</a></li>
+                </ul>
+                <h4>Học tập</h4>
+                <ul>
+                    <li><a href="Lichhoc.html" target="main">Lịch học</a></li>
+                </ul>
+
+                <h4>Danh sách thành viên</h4>
+                <ol>
+                    <li>Nguyễn Minh Duy</li>
+                    <li>Phạm Văn B</li>
+                    <li>...</li>
+                </ol>
+            </td>
+            <td class="nd">
+                <iframe name="main" src="muaxuan.html"></iframe>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
