@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 16px;
+        }
+        h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            margin-top: 5px;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            padding: 2px 0;
+            vertical-align: top;
+        }
+        td:first-child {
+            padding-right: 5px;
+        }
+        textarea {
+            font-family: monospace;
+        }
+        .bio-label {
+            vertical-align: bottom;
+            padding-bottom: 2px;
+        }
+        button {
+            margin-top: 5px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Registration Form</h3>
+    <form>
+        <table>
+            <tr>
+                <td>First Name :</td>
+                <td><input type="text" placeholder="Enter First Name"></td>
+            </tr>
+            <tr>
+                <td>Last Name :</td>
+                <td><input type="text" placeholder="Enter Last Name"></td>
+            </tr>
+            <tr>
+                <td>Email :</td>
+                <td><input type="email" placeholder="Enter Email Address"></td>
+            </tr>
+            <tr>
+                <td>Password :</td>
+                <td><input type="password"></td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>
+                    <input type="radio" name="gioitinh" value="nam"> Nam<br> 
+                    <input type="radio" name="gioitinh" value="nu"> Nữ <br> 
+                    <input type="radio" name="gioitinh" value="OT"> Other <br> 
+                </td>
+            </tr>
+            <tr>
+                <td>Age :</td>
+                <td><input type="number"></td>
+            </tr>
+            <tr>
+                <td >Preferences :</td>
+                <td>Acrylic Painting <input type="checkbox"><br> Oil Painting <input type="checkbox"><br> Water Color Painting <input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Select Occupation</td>
+                <td>
+                    <select>
+                        <option>Student</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="bio-label">Bio</td>
+                <td>
+                    <textarea rows="5" cols="35" placeholder="Share few lines about&#10;yourself..."></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="reset">RESET</button>
+                    <button type="submit">SUBMIT</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
