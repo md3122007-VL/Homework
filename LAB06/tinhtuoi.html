@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<H2>Chương trình tính tuổi</H2>
+<label for="">Nhập Năm sinh</label>
+    <input type="number" id="Namsinh">
+    <br>
+    <button onclick="tinhtuoi()">Xác nhận</button>
+    <p id = "ketqua"></p>
+    <script>
+        function tinhtuoi(){
+            let yourYear = document.getElementById("Namsinh").value;
+            let thisYear = 2026;
+            let yourAge = thisYear - yourYear
+            document.getElementById("ketqua").innerHTML = "Tuoi cua ban: " + yourAge;
+        }
+    </script>
+</body>
+</html>

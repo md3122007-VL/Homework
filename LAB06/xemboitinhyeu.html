@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Xem bói tình yêu</h2>
+    <label for="tenban">Nhập tên bạn: </label>
+    <input type="text" id="tenban">
+    <br><br>
+    <label for="tennguoiay">Nhập tên người ấy: </label>
+    <input type="text" id="tennguoiay">
+    <br><br>
+    <button onclick="xemboi()">Xem bói</button>
+    <h3 id="ketqua">Kết quả</h3>
+
+<script>
+    function xemboi(){
+        let tenBan = document.getElementById("tenban").value;
+        let tenNguoiay = document.getElementById("tennguoiay").value;
+        let diem = Math.floor(Math.random() * 100) + 1;
+        if (diem > 50){
+            document.getElementById("ketqua").innerHTML = "Mối quan hệ giữa " + tenBan + " và " + tenNguoiay + "điểm số: " + diem + "  Chúc mừng! Hai bạn rất hợp nhau!";
+        } else {
+            document.getElementById("ketqua").innerHTML = "Mối quan hệ giữa " + tenBan + " và " + tenNguoiay + "điểm số: " + diem + "  Rất tiếc, hai bạn có vẻ chưa hợp nhau lắm.";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Tính chỉ số BMI</h2>
+    <input type="number" step="0.01" id="chieuCao" placeholder="Chiều cao (m). Ví dụ: 1.65">
+    <input type="number" step="0.1" id="canNang" placeholder="Cân nặng (kg). Ví dụ: 55">
+    <button onclick="tinhBMI()">Tính BMI</button>
+    
+    <h3 id="ketqua14"></h3>
+
+<script>
+    function tinhBMI() {
+        let height = Number(document.getElementById("chieuCao").value);
+        let weight = Number(document.getElementById("canNang").value);
+        if (height <= 0 || weight <= 0) {
+            alert("Vui lòng nhập chiều cao và cân nặng hợp lệ (lớn hơn 0)!");
+            return;
+        }
+        let bmi = weight / (height * height);
+        let bmiTron = bmi.toFixed(2);
+        let ketLuan = "";
+        if (bmi < 18.5) {
+            ketLuan = "Gầy";
+        } else if (bmi >= 18.5 && bmi < 24.9) {
+            ketLuan = "Bình thường";
+        } else if (bmi >= 25 && bmi < 29.9) {
+            ketLuan = "Thừa cân";
+        } else {
+            ketLuan = "Béo phì";
+        }
+        
+        document.getElementById("ketqua14").innerHTML = "BMI của bạn: " + bmiTron + "Kết luận: " + ketLuan ;
+    }
+</script>
+</body>
+</html>

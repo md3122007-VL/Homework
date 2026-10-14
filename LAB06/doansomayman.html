@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Đoán số may mắn</h2>
+    <label for="">Đoán số may mắn</label>
+    <input type="number" id="sodoan">
+    <br> <br>
+    <button onclick="doanso()">Đoán</button>
+    <h3 id="ketqua">Kết quả</h3>
+<script>
+    function doanso(){
+    let so = document.getElementById("sodoan").value;
+    let songaunhien = Math.floor(Math.random() *10) + 1;
+    if(so == songaunhien){
+        document.getElementById("ketqua").innerHTML = "Chúc mừng bạn đã đoán đúng"
+    }else{
+        document.getElementById("ketqua").innerHTML = "Rất tiếc bạn đoán sai rồi. " + "Số ngẫu nhiên là: " + songaunhien
+    }
+}
+</script>
+</body>
+</html>

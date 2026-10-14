@@ -1,0 +1,35 @@
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trò chơi Oẳn tù tì</title>
+</head>
+<body>
+    <h2>Trò chơi Oẳn tù tì</h2>
+    <button onclick="oantuti('Kéo')">Kéo</button>
+    <button onclick="oantuti('Búa')">Búa</button>
+    <button onclick="oantuti('Bao')">Bao</button>
+    <br>
+    <h3 id="mayra">Máy ra: </h3>
+    <h3 id="ketqua">Kết quả: </h3>
+
+<script>
+    function oantuti(sudung){
+        let choices = ["Kéo", "Búa", "Bao"];
+        let randomChoice = choices[Math.floor(Math.random() * choices.length)];
+        document.getElementById("mayra").innerHTML = "Máy ra: " + randomChoice;
+        if (sudung === randomChoice) {
+            document.getElementById("ketqua").innerHTML = "Kết quả: Hòa nhau!";
+        }else if (sudung === "Kéo" && randomChoice === "Bao") {
+            document.getElementById("ketqua").innerHTML = "Kết quả: Chúc mừng bạn đã thắng";
+        }else if (sudung === "Búa" && randomChoice === "Kéo") {
+            document.getElementById("ketqua").innerHTML = "Kết quả: Chúc mừng bạn đã thắng";
+        }else if (sudung === "Bao" && randomChoice === "Búa") {
+            document.getElementById("ketqua").innerHTML = "Kết quả: Chúc mừng bạn đã thắng";
+        }else {
+            document.getElementById("ketqua").innerHTML = "Kết quả: Rất tiếc bạn thua rồi.";
+        }
+    }
+</script>
+</body>
+</html>

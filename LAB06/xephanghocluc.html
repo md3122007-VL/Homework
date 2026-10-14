@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Xếp hạng học lực</h2>
+    <label for="">Nhập số điểm</label>
+    <input id="score" type="number">
+    <br>
+    <button onclick="xeploai()">Xác nhận</button>
+    <p id = "ketqua"></p>
+    <script>
+        function xeploai(){
+            let diem = document.getElementById("score").value;
+            if (diem <= 60){
+                document.getElementById("ketqua").innerHTML = "Xếp hạng của bạn là:" + "F";
+            }else if(diem <= 69){
+                document.getElementById("ketqua").innerHTML = "Xếp hạng của bạn là:" + "D";
+            }else if(diem <= 79){
+                document.getElementById("ketqua").innerHTML = "Xếp hạng của bạn là:" + "C";
+            }else if(diem <= 89){
+                document.getElementById("ketqua").innerHTML = "Xếp hạng của bạn là:" + "B";
+            }else{
+                document.getElementById("ketqua").innerHTML = "Xếp hạng của bạn là:" + "A";
+            }
+        }
+    </script>
+</body>
+</html>
