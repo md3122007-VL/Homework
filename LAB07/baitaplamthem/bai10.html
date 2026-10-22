@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Số Lớn Nhất Trong Mảng</title>
+</head>
+<body>
+
+    <h2>Viết hàm sumOfSquares nhận vào một mảng số nguyên và trả về tổng bình phương của mỗi số trong mảng:</h2>
+    <h3>Mảng [1, 2, 3] -> sumOfSquares là: <div id="SOS1"></h3>
+    <h3>Mảng [4, 5, 6] -> sumOfSquares là: <div id="SOS2"></h3>
+
+
+<script>
+    function sumOfSquares(arr) {
+        if (arr.length === 0) return undefined;
+        let sum = arr[0];
+        t = 0;
+        for (let i = 0; i < arr.length; i++) {
+            t += arr[i]**2
+        }
+        return t;
+    }
+    document.getElementById("SOS1").innerText = sumOfSquares([1, 2, 3]);
+    document.getElementById("SOS2").innerText = sumOfSquares([4, 5, 6]);
+</script>
+</body>
+</html>

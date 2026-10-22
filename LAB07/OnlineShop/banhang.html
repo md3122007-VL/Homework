@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+  <meta charset="UTF-8">
+  <title>Bài tập: Cửa Hàng Online - Đăng Nhập</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+
+  <!-- =========================================================
+      MÀN HÌNH ĐĂNG NHẬP / ĐĂNG KÝ
+      Đây là màn hình đầu tiên người dùng nhìn thấy. Sau khi
+      đăng nhập thành công, màn hình này sẽ ẩn đi và màn hình
+      cửa hàng bên dưới sẽ hiện ra.
+      ========================================================= -->
+  <div id="manHinhDangNhap" class="card">
+    <h2>Đăng nhập / Đăng ký</h2>
+    <input type="text" id="oTaiKhoan" placeholder="Tài khoản">
+    <input type="password" id="oMatKhau" placeholder="Mật khẩu">
+    <div class="thong-bao" id="thongBaoLoi"></div>
+    <button id="btnDangNhap" onclick="dangNhap()">Đăng nhập</button>
+    <button id="btnDangKy" onclick="dangKy()">Đăng ký</button>
+    <p style="font-size:12px;color:#999;margin-top:12px;">
+      Tài khoản mẫu có sẵn: <b>khach1</b> / mật khẩu <b>123456</b>
+    </p>
+  </div>
+
+  <!-- =========================================================
+      MÀN HÌNH CỬA HÀNG
+      Bị ẩn (display: none) cho đến khi đăng nhập thành công.
+      Phần sản phẩm / giỏ hàng ở đây đã code sẵn (bài trước em
+      đã làm), không cần sửa gì trong khu vực này.
+      ========================================================= -->
+  <div id="manHinhCuaHang" style="display: none;">
+    <div class="thanh-tren">
+      Xin chào, <b id="tenDangNhap"></b>
+      <button onclick="dangXuat()">Đăng xuất</button>
+    </div>
+
+    <h1>Cửa Hàng Online</h1>
+
+    <div class="layout">
+      <!-- DANH SÁCH SẢN PHẨM -->
+      <div class="card">
+        <h2>Danh sách sản phẩm</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Tên sản phẩm</th>
+              <th>Giá</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="bangSanPham">
+            <!-- JS sẽ điền dữ liệu vào đây -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- GIỎ HÀNG -->
+      <div class="card">
+        <h2>Giỏ hàng</h2>
+        <div id="bangGioHang">
+          <!-- JS sẽ điền dữ liệu vào đây -->
+        </div>
+        <div class="tong-tien">
+          <span>Tổng tiền:</span>
+          <span id="tongTien">0đ</span>
+        </div>
+        <button id="btnThanhToan" onclick="thanhToan()">Thanh toán</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    // Dữ liệu tài khoản
+    let danhSachTK = [
+      { taiKhoan: "khach1", matKhau: "123456" }
+    ];
+
+    // Dữ liệu sản phẩm và giỏ hàng có sẵn
+    let danhSachSP = [
+      { id: 1, ten: "Điện thoại iPhone", gia: 20000000 },
+      { id: 2, ten: "Laptop Asus Zenbook", gia: 25000000 },
+      { id: 3, ten: "Tai nghe Bluetooth", gia: 1500000 }
+    ];
+    let gioHang = [];
+
+    // Tham chiếu DOM màn hình đăng nhập
+    let oTaiKhoan = document.getElementById("oTaiKhoan");
+    let oMatKhau = document.getElementById("oMatKhau");
+    let thongBaoLoi = document.getElementById("thongBaoLoi");
+    let manHinhDangNhap = document.getElementById("manHinhDangNhap");
+    
+    // Tham chiếu DOM màn hình cửa hàng
+    let manHinhCuaHang = document.getElementById("manHinhCuaHang");
+    let tenDangNhap = document.getElementById("tenDangNhap");
+    let bangSanPham = document.getElementById("bangSanPham");
+    let bangGioHang = document.getElementById("bangGioHang");
+    let tongTien = document.getElementById("tongTien");
+
+    // Hàm kiểm tra vị trí tài khoản trong mảng
+    function timViTriTK(taiKhoan) {
+      for (let i = 0; i < danhSachTK.length; i++) {
+        if (danhSachTK[i].taiKhoan === taiKhoan) {
+          return i;
+        }
+      }
+      return -1;
+    }
+
+    // Hàm xử lý Đăng nhập
+    function dangNhap() {
+      let tk = oTaiKhoan.value;
+      let mk = oMatKhau.value;
+      let viTri = timViTriTK(tk);
+
+      if (viTri !== -1 && danhSachTK[viTri].matKhau === mk) {
+        thongBaoLoi.innerText = "";
+        manHinhDangNhap.style.display = "none";
+        manHinhCuaHang.style.display = "block";
+        tenDangNhap.innerText = tk;
+        
+        oTaiKhoan.value = "";
+        oMatKhau.value = "";
+        hienThiCuaHang();
+      } else {
+        thongBaoLoi.innerText = "Sai tài khoản hoặc mật khẩu!";
+      }
+    }
+
+    // Hàm xử lý Đăng ký
+    function dangKy() {
+      let tk = oTaiKhoan.value;
+      let mk = oMatKhau.value;
+
+      if (tk === "" || mk === "") {
+        thongBaoLoi.innerText = "Vui lòng nhập đầy đủ thông tin!";
+        return;
+      }
+
+      if (timViTriTK(tk) !== -1) {
+        thongBaoLoi.innerText = "Tài khoản này đã tồn tại!";
+      } else {
+        danhSachTK.push({ taiKhoan: tk, matKhau: mk });
+        thongBaoLoi.innerText = "Đăng ký thành công! Hãy bấm Đăng nhập.";
+      }
+    }
+
+    // Hàm xử lý Đăng xuất
+    function dangXuat() {
+      manHinhCuaHang.style.display = "none";
+      manHinhDangNhap.style.display = "block";
+      gioHang = [];
+    }
+
+    // Hàm hiển thị sản phẩm và giỏ hàng có sẵn
+    function hienThiCuaHang() {
+      // 1. Vẽ danh sách sản phẩm
+      let htmlSP = "";
+      for (let i = 0; i < danhSachSP.length; i++) {
+        let sp = danhSachSP[i];
+        htmlSP += `
+          <tr>
+            <td>${sp.ten}</td>
+            <td>${sp.gia.toLocaleString()}đ</td>
+            <td><button onclick="themVaoGio(${sp.id})">Mua</button></td>
+          </tr>
+        `;
+      }
+      bangSanPham.innerHTML = htmlSP;
+
+      // 2. Vẽ giỏ hàng và tính tiền
+      let htmlGH = "";
+      let total = 0;
+      for (let i = 0; i < gioHang.length; i++) {
+        let item = gioHang[i];
+        let thanhTien = item.gia * item.soLuong;
+        total += thanhTien;
+        htmlGH += `
+          <div style="margin-bottom: 8px;">
+            ${item.ten} x ${item.soLuong} (${thanhTien.toLocaleString()}đ)
+          </div>
+        `;
+      }
+      bangGioHang.innerHTML = htmlGH === "" ? "Giỏ hàng trống" : htmlGH;
+      tongTien.innerText = total.toLocaleString() + "đ";
+    }
+
+    // Hàm thêm vào giỏ hàng
+    function themVaoGio(id) {
+      let spXửLý = null;
+      for (let i = 0; i < danhSachSP.length; i++) {
+        if (danhSachSP[i].id === id) {
+          spXửLý = danhSachSP[i];
+          break;
+        }
+      }
+
+      let indexGH = -1;
+      for (let i = 0; i < gioHang.length; i++) {
+        if (gioHang[i].id === id) {
+          indexGH = i;
+          break;
+        }
+      }
+
+      if (indexGH !== -1) {
+        gioHang[indexGH].soLuong++;
+      } else {
+        gioHang.push({ id: spXửLý.id, ten: spXửLý.ten, gia: spXửLý.gia, soLuong: 1 });
+      }
+      hienThiCuaHang();
+    }
+
+    // Hàm thanh toán
+    function thanhToan() {
+      if (gioHang.length === 0) {
+        bangGioHang.innerHTML = "<div style='color: red;'>Giỏ hàng của bạn đang trống!</div>";
+        return;
+      }
+      gioHang = [];
+      hienThiCuaHang();
+      bangGioHang.innerHTML = "<div style='color: green;'>Thanh toán thành công! Cảm ơn bạn đã mua hàng.</div>";
+    }
+  </script>
+  </body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Bài tập: Quản Lý Sinh Viên</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>Bài Tập: Quản Lý Sinh Viên</h1>
+
+  <!-- Ô nhập liệu: dùng chung cho cả Thêm và Sửa -->
+  <div class="form-nhap">
+    <input type="text" id="mssv" placeholder="Mã SV (VD: SV001)">
+    <input type="text" id="hoten" placeholder="Họ tên">
+    <input type="text" id="lop" placeholder="Lớp (VD: CNTT01)">
+    <button id="btnThem" onclick="luuSinhVien()">Thêm</button>
+  </div>
+
+  <!-- BẢNG DANH SÁCH -->
+  <table>
+    <thead>
+      <tr>
+        <th>Mã SV</th>
+        <th>Họ tên</th>
+        <th>Lớp</th>
+        <th>Thao tác</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <!-- Các dòng sinh viên sẽ được JS điền vào đây -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+  // Dữ liệu mẫu ban đầu - KHÔNG cần sửa phần này
+  let danhSachSV = [
+    { mssv: "SV001", hoten: "Nguyễn Văn A", lop: "CNTT01" },
+    { mssv: "SV002", hoten: "Trần Thị B",  lop: "CNTT02" },
+    { mssv: "SV003", hoten: "Lê Văn C",    lop: "CNTT01" }
+  ];
+
+  // Mã SV đang được sửa. null nghĩa là đang ở chế độ Thêm mới - KHÔNG cần sửa
+  let dangSuaId = null;
+
+  // Tham chiếu DOM - KHÔNG cần sửa phần này
+  const oMssv = document.getElementById("mssv");
+  const oHoten = document.getElementById("hoten");
+  const oLop = document.getElementById("lop");
+  const oBtnThem = document.getElementById("btnThem");
+  const oTableBody = document.getElementById("tableBody");
+
+  /* =========================================================
+     TODO 1: Hàm timViTri(mssv) -> Bạn đã làm đúng!
+     ========================================================= */
+  function timViTri(mssv) {
+    for(let i = 0; i < danhSachSV.length; i ++){
+      if(danhSachSV[i].mssv == mssv){
+         return i;
+      }
+    }
+    return -1;
+  }
+
+  /* =========================================================
+     TODO 2: Hàm hienThiDanhSach() 
+     (Đã sửa: Thay đổi từ cấu trúc Todo List sang cấu trúc bảng Table)
+     ========================================================= */
+  function hienThiDanhSach(){
+    let html = "";
+    for(let i = 0; i < danhSachSV.length; i++){
+      let sv = danhSachSV[i];
+      
+      // Tạo chuỗi HTML dạng dòng <tr> và các ô <td> tương ứng với cấu trúc bảng
+      html += `
+        <tr>
+          <td>${sv.mssv}</td>
+          <td>${sv.hoten}</td>
+          <td>${sv.lop}</td>
+          <td>
+            <button class="btn-sua" onclick="suaSinhVien('${sv.mssv}')">Sửa</button>
+            <button class="btn-xoa" onclick="xoaSinhVien('${sv.mssv}')">Xóa</button>
+          </td>
+        </tr>
+      `;
+    }
+    oTableBody.innerHTML = html;
+  }
+
+  /* =========================================================
+     TODO 3: Hàm luuSinhVien() (Bổ sung mới)
+     ========================================================= */
+  function luuSinhVien() {
+    // 1. Đọc giá trị từ 3 ô input
+    let mssv = oMssv.value.trim();
+    let hoten = oHoten.value.trim();
+    let lop = oLop.value.trim();
+
+    // Kiểm tra nhanh xem người dùng có nhập thiếu ô nào không
+    if (mssv === "" || hoten === "" || lop === "") {
+      alert("Vui lòng điền đầy đủ thông tin sinh viên!");
+      return;
+    }
+
+    // 2. Kiểm tra đang ở chế độ Thêm mới hay Cập nhật
+    if (dangSuaId === null) {
+      // THÊM MỚI: Kiểm tra trùng mã sinh viên trước khi thêm
+      if (timViTri(mssv) !== -1) {
+        alert("Mã sinh viên này đã tồn tại!");
+        return;
+      }
+      
+      let svMoi = { mssv: mssv, hoten: hoten, lop: lop };
+      danhSachSV.push(svMoi);
+    } else {
+      // CẬP NHẬT: Tìm vị trí của mã SV đang được sửa và gán đè dữ liệu mới
+      let viTri = timViTri(dangSuaId);
+      if (viTri !== -1) {
+        danhSachSV[viTri] = { mssv: mssv, hoten: hoten, lop: lop };
+      }
+      // Trả lại trạng thái bình thường
+      dangSuaId = null;
+      oBtnThem.innerText = "Thêm";
+      oMssv.disabled = false; // Bật lại ô nhập mã SV sau khi sửa xong
+    }
+
+    // 3. Xóa trắng các ô input và load lại danh sách
+    oMssv.value = "";
+    oHoten.value = "";
+    oLop.value = "";
+    hienThiDanhSach();
+  }
+
+  /* =========================================================
+     TODO 4: Hàm xoaSinhVien(mssv) (Bổ sung mới)
+     ========================================================= */
+  function xoaSinhVien(mssv) {
+    let viTri = timViTri(mssv);
+    if (viTri !== -1) {
+      // Xác nhận trước khi xóa cho an toàn
+      if (confirm("Bạn có chắc chắn muốn xóa sinh viên này không?")) {
+        danhSachSV.splice(viTri, 1);
+        hienThiDanhSach();
+      }
+    }
+  }
+
+  /* =========================================================
+     TODO 5: Hàm suaSinhVien(mssv) (Bổ sung mới)
+     ========================================================= */
+  function suaSinhVien(mssv) {
+    let viTri = timViTri(mssv);
+    if (viTri !== -1) {
+      let sv = danhSachSV[viTri];
+      
+      // Đổ ngược dữ liệu từ mảng vào các ô input trên màn hình
+      oMssv.value = sv.mssv;
+      oHoten.value = sv.hoten;
+      oLop.value = sv.lop;
+      
+      // Khóa ô mã SV lại vì mã sinh viên là duy nhất, không cho phép sửa mã
+      oMssv.disabled = true; 
+      
+      // Đổi chế độ sang Cập nhật
+      dangSuaId = mssv;
+      oBtnThem.innerText = "Cập nhật";
+    }
+  }
+
+  // Hiển thị danh sách mẫu ngay khi trang vừa tải xong
+  hienThiDanhSach();
+</script>
+
+</body>
+</html>

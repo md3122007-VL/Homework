@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Số Lớn Nhất Trong Mảng</title>
+</head>
+<body>
+
+    <h2>Bài tập 15: Viết hàm removeDuplicates nhận vào một mảng và trả về một mảng mới không có phần tử trùng lặp.</h2>
+    <h3>Mảng sau khi xóa trùng là: <div id="remove1"></h3>
+
+<script>
+    function removeDuplicates(arr) {
+        let result = [];
+        for (let i = 0; i < arr.length; i++) {
+            let exists = false;
+            for (let j = 0; j < result.length; j++) {
+                if (arr[i] === result[j]) {
+                    exists = true;
+                    break;
+                }
+            }
+            if (exists === false) {
+                result.push(arr[i]);
+            }
+        }
+        return JSON.stringify(result);
+    }
+
+    document.getElementById("remove1").innerText = removeDuplicates([1, 2, 2, 3, 4, 4, 5]);
+</script>
+
+</body>
+</html>

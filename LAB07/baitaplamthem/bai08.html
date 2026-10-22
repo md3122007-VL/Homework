@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Số Lớn Nhất Trong Mảng</title>
+</head>
+<body>
+
+    <h2>Viết hàm countGreaterThan nhận vào một mảng số và một số value, hàm trả về số lượng phần tử trong mảng lớn hơn value</h2>
+    <h3>Mảng [1, 5, 7, 2, 3] với value 3 có số lượng là: <div id="count1"></h3>
+    <h3>Mảng [2, 3, 1, -6, 8] với value 5 có số lượng là: <div id="count2"></h3>
+    <h3>Mảng [] với value 5 có số lượng là: <div id="count3"></h3>
+
+
+<script>
+    function countGreaterThan(arr, value) {
+        if (arr.length === 0) return 0;
+        let count = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > value) {
+                count = count + 1;
+            }
+        }
+        return count;
+    }
+    document.getElementById("count1").innerText = countGreaterThan([1, 5, 7, 2, 3], 3);
+    document.getElementById("count2").innerText = countGreaterThan([2, 3, 1, -6, 8], 5);
+    document.getElementById("count3").innerText = countGreaterThan([], 5);
+</script>
+
+</body>
+</html>

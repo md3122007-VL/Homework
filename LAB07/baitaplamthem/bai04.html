@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Số Lớn Nhất Trong Mảng</title>
+</head>
+<body>
+
+    <h2> Viết hàm countPositiveNumbers nhận vào một mảng số và trả về số lượng số dương trong mảng đó:</h2>
+    <h3>Mảng [-1, 2, 3, -4, 5] -> Max là: <div id="count1"></h3>
+
+
+<script>
+    count = []
+    function countPositiveNumbers(arr) {
+        if (arr.length === 0) return undefined;
+        let count = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] > 0) {
+                count += arr[i];
+            }
+        }   
+        return count;
+    }
+    document.getElementById("count1").innerText = countPositiveNumbers([-1, 2, 3, -4, 5]);
+</script>
+
+</body>
+</html>

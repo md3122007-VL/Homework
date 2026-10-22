@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Số Lớn Nhất Trong Mảng</title>
+</head>
+<body>
+
+    <h2>Bài tập 16: Viết hàm findPairsWithSum tìm các cặp số có tổng bằng sum.</h2>
+    <h3>Mảng với tổng bằng 5 có các cặp là: <div id="findP1"></h3>
+
+<script>
+    function findPairsWithSum(arr, sum) {
+        let pairs = [];
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = i + 1; j < arr.length; j++) {
+                if (arr[i] + arr[j] === sum) {
+                    pairs.push([arr[i], arr[j]]);
+                }
+            }
+        }
+        return JSON.stringify(pairs);
+    }
+
+    document.getElementById("findP1").innerText = findPairsWithSum([1, 2, 3, 4, 5], 5);
+</script>
+
+</body>
+</html>

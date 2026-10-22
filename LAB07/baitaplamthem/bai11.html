@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Số Lớn Nhất Trong Mảng</title>
+</head>
+<body>
+
+    <h2>Viết hàm filterEvensAndSum để lọc ra các số chẵn từ một mảng số nguyên đầu vào và tính tổng của chúng.</h2>
+    <h3>Mảng [1, 2, 3, 4, 5, 6] tổng các số chẵn là: <div id="filter1"></h3>
+    <h3>Mảng [12, 14, 15, 19, 20, 100] tổng các số chẵn là: <div id="filter2"></h3>
+
+
+<script>
+    function filterEvensAndSum(arr) {
+        if (arr.length === 0) return 0;
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 === 0) {
+                sum += arr[i];
+            }
+        }
+        return sum;
+    }
+
+    document.getElementById("filter1").innerText = filterEvensAndSum([1, 2, 3, 4, 5, 6]);
+    document.getElementById("filter2").innerText = filterEvensAndSum([12, 14, 15, 19, 20, 100]);
+</script>
+
+</body>
+</html>

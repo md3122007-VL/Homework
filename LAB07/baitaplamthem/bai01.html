@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Số Lớn Nhất Trong Mảng</title>
+</head>
+<body>
+
+    <h2>Kết quả tìm số lớn nhất (findMax):</h2>
+    <h3>Mảng [1, 3, 5, 7, 9] -> Max là: <div id="com1"></h3>
+    <h3>Mảng [10, 20, 30, 40, 50] -> Max là: <div id="com2"></h3>
+    <h3>Mảng [-5, -2, -1, -3] -> Max là: <div id="com3"></h3>
+
+
+<script>
+    function findMax(arr) {
+        if (arr.length === 0) return undefined;
+        let max = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+    document.getElementById("com1").innerText = findMax([1, 3, 5, 7, 9]);
+    document.getElementById("com2").innerText = findMax([10, 20, 30, 40, 50]);
+    document.getElementById("com3").innerText = findMax([-5, -2, -1, -3]);
+</script>
+
+</body>
+</html>

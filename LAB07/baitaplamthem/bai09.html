@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Số Lớn Nhất Trong Mảng</title>
+</head>
+<body>
+
+    <h2> Viết hàm alternateSum để tính “tổng xen kẽ” từ một mảng số. Trong “tổng xen kẽ”, bạn sẽ cộng số ở vị trí chẵn và trừ số ở vị trí lẻ trong mảng:</h2>
+    <h3>Mảng [10, 5, 6, 3] tổng xen kẽ là: <div id="al1"></h3>
+    <h3>Mảng [1, 2, 3, 4, 5] tổng xen kẽ là là: <div id="al2"></h3>
+
+
+<script>
+    function alternateSum(arr) {
+        if (arr.length === 0) return undefined;
+        let sum = arr[0];
+        number = 0
+        for (let i = 1; i < arr.length; i++) {
+            if (number % 2 != 0) {
+                sum += arr[i];
+            }
+            else if (number % 2 == 0) {
+                sum -= arr[i];
+            }
+            number += 1
+        }
+        return sum;
+    }
+    document.getElementById("al1").innerText = alternateSum([10, 5, 6, 3]);
+    document.getElementById("al2").innerText = alternateSum([1,2, 3, 4, 5]);
+</script>
+
+</body>
+</html>

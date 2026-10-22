@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Số Lớn Nhất Trong Mảng</title>
+</head>
+<body>
+
+    <h2>Viết hàm findLongestWord nhận vào một mảng các chuỗi và trả về chuỗi dài nhất trong mảng đó. Nếu có nhiều chuỗi có độ dài giống nhau và là dài nhất, trả về chuỗi xuất hiện đầu tiên.</h2>
+    <h3>Mảng ["apple", "banana", "cherry", "date"] chuỗi dài nhất là: <div id="find1"></h3>
+    <h3>Mảng ["hello", "world", "this", "is", "great"] chuỗi dài nhất là: <div id="find2"></h3>
+
+
+<script>
+    function findLongestWord(arr) {
+        if (arr.length === 0) return undefined;
+        let longest = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i].length > longest.length) {
+                longest = arr[i];
+            }
+        }
+        return longest;
+    }
+    document.getElementById("find1").innerText = findLongestWord(["apple", "banana", "cherry", "date"]);
+    document.getElementById("find2").innerText = findLongestWord(["hello", "world", "this", "is", "great"]);
+</script>
+
+</body>
+</html>

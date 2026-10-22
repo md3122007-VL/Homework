@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Số Lớn Nhất Trong Mảng</title>
+</head>
+<body>
+
+    <h2>Kết quả tìm số nhỏ nhất (findMin):</h2>
+    <h3>Mảng [5, 2, 8, 1, 4] Min là: <div id="moc1"></h3>
+
+<script>
+    function findMin(arr) {
+        if (arr.length === 0) return undefined;
+        let min = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        return min;
+    }
+    document.getElementById("moc1").innerText = findMin([5, 2, 8, 1, 4]);
+</script>
+</body>
+</html>

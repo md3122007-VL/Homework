@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Số Lớn Nhất Trong Mảng</title>
+</head>
+<body>
+    <h2> Viết hàm sumArray nhận vào một mảng số và trả về tổng của tất cả các số trong mảng đó:</h2>
+    <h3>Mảng [1, 2, 3, 4 ,5] -> sumArray là: <div id="sumall"></h3>
+<script>
+    function sumArray(arr) {
+        if (arr.length === 0) return undefined;
+        let sum = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+                sum += arr[i]; 
+        }
+        return sum;
+    }
+    document.getElementById("sumall").innerText =  sumArray([1, 2, 3, 4 ,5]);
+</script>
+
+</body>
+</html>

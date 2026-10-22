@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Số Lớn Nhất Trong Mảng</title>
+</head>
+<body>
+
+    <h2>Viết hàm calculateAverage nhận vào một mảng số và trả về trung bình cộng của các số trong mảng đó, trả về 0 nếu mảng trống.</h2>
+    <h3>Mảng [10, 20, 30, 40, 50] trung bình cộng là: <div id="calculate1"></h3>
+
+
+<script>
+    function calculateAverage(arr) {
+        if (arr.length === 0) return 0;
+        let sum = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        return sum / arr.length;
+    }
+    document.getElementById("calculate1").innerText = calculateAverage([10, 20, 30, 40, 50]);
+</script>
+
+</body>
+</html>

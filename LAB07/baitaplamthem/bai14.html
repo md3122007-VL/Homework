@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Số Lớn Nhất Trong Mảng</title>
+</head>
+<body>
+
+    <h2>Bài tập 14: Viết hàm findMissingNumber để tìm số thiếu trong một dãy số từ 1 đến n.</h2>
+    <h3>Mảng với n = 6 thiếu số: <div id="findM1"></h3>
+    <h3>Mảng với n = 8 thiếu số: <div id="findM2"></h3>
+    <h3>Mảng với n = 4 thiếu số: <div id="findM3"></h3>
+
+<script>
+    function findMissingNumber(arr, n) {
+        let expectedSum = 0;
+        for (let i = 1; i <= n; i++) {
+            expectedSum += i;
+        }
+        let actualSum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            actualSum += arr[i];
+        }
+        return expectedSum - actualSum;
+    }
+
+    document.getElementById("findM1").innerText = findMissingNumber([1, 2, 4, 5, 6], 6);
+    document.getElementById("findM2").innerText = findMissingNumber([3, 7, 1, 2, 8, 4, 5], 8);
+    document.getElementById("findM3").innerText = findMissingNumber([1, 2, 3, 4], 4);
+</script>
+
+</body>
+</html>
